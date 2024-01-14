@@ -60,32 +60,50 @@ function Header() {
   // const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
   const style = {};
   return (
-    <div className="header footer">
-      <h1 style={style}>First React Pizza Co.</h1>
+    <div className="header">
+      <h1 style={style}>Order Pizza Co.</h1>
     </div>
   );
 }
 function Menu() {
+  const pizzas = pizzaData;
+  // const pizzas = [];
+  const numPizzas = pizzas.length;
   return (
     <main className="menu">
       <h2> Our Menu </h2>
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => {
-          return <Pizza pizzaObj={pizza} key={pizza.name} />;
-        })}
-      </ul>
+
+      {numPizzas > 0 ? (
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => {
+              return <Pizza pizzaObj={pizza} key={pizza.name} />;
+            })}
+          </ul>
+        </>
+      ) : (
+        <p>We're still working on our menu. Please come back later:</p>
+      )}
     </main>
   );
 }
-function Pizza(props) {
+function Pizza({ pizzaObj }) {
   // if (props.pizzaObj.soldOut) return null;
   return (
-    <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>Price: ${Number(props.pizzaObj.price)}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>
+          {pizzaObj.soldOut
+            ? "Sold Out"
+            : `Price: $${Number(pizzaObj.price).toFixed(2)}`}
+        </span>
       </div>
     </li>
   );
@@ -101,7 +119,7 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        <Order closeHour={closeHours} />
+        <Order closeHour={closeHours} openHour={openHours} />
       ) : (
         <p>
           We're happy to see you from {openHours}:00 to {closeHours}:00
@@ -111,10 +129,12 @@ function Footer() {
   );
 }
 
-function Order(props) {
+function Order({ openHour, closeHour }) {
   return (
     <div className="order">
-      <p>we're open for you until {props.closeHour}:00.</p>
+      <p>
+        we're open for you from {openHour}:00 {closeHour}:00.
+      </p>
       <button className="btn"> Order! </button>
     </div>
   );

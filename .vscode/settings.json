@@ -1,0 +1,7 @@
+{
+    "editor.defaultFormatter": "VisualStudioExptTeam.vscodeintellicode",
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
+}

@@ -56,7 +56,7 @@ const KEY = "e769cade";
 function App() {
 
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState("inception");
+  const [query, setQuery] = useState("");
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsloading] = useState(false)
   const [error, setError] = useState("")
@@ -108,6 +108,8 @@ function App() {
     }
     fetchMovies()
   }, [query])
+
+
 
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -323,6 +325,20 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onAddWatched(newWatchedMovie)
 
   }
+
+  useEffect(function () {
+    function callback(e) {
+      if (e.code === 'Escape') {
+        onCloseMovie();
+        console.log('closing');
+      }
+    }
+
+    document.addEventListener('keydown', callback)
+    return function () {
+      document.removeEventListener("keydown", callback);
+    }
+  }, [onCloseMovie])
 
   useEffect(function () {
 

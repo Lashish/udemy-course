@@ -16,15 +16,12 @@ function reducer(state, action) {
         default:
             throw new Error("Unknown action")
     }
-
 }
 function DateCounter() {
 
     const initialState = { count: 0, step: 1 }
     const [state, dispatch] = useReducer(reducer, initialState);
     const { count } = state;
-
-
 
     const date = new Date("june 21 2027");
     date.setDate(date.getDate() + count)
@@ -33,7 +30,6 @@ function DateCounter() {
         dispatch({ type: "dec" })
 
     }
-
     const inc = () => {
         dispatch({ type: "inc" })
 

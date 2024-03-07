@@ -1,0 +1,25 @@
+.form{
+    background-color: var(--color-dark--2);
+    border-radius: 7px;
+    padding: 2rem 3rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.row{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+:global(.react-datepicker){
+    font-family: inherit;
+    font-size: 1.2rem;
+}

@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function createRandomPost() {
   return {
@@ -8,7 +8,7 @@ function createRandomPost() {
   }
 }
 
-const PostContext = createContext()
+
 
 function App() {
   const [posts, setPosts] = useState(() => Array.from({ length: 20 }, () => createRandomPost()))
@@ -33,71 +33,56 @@ function App() {
   )
 
   return (
-
-    <PostContext.Provider value={{
-      posts: searchedPost,
-      onClearPosts: handleClearPost,
-      onAddPosts: handleAddPost,
-      searchQuery,
-      setSearchQuery,
-    }}>
-
-      <section >
-        <button onClick={() => { setIsFakeDark((isFakeDark) => !isFakeDark) }} className="btn-fake-dark-mode">{isFakeDark ? "☀️" : "🌙"}</button>
-        <Header />
-        <Main />
-        <Archive />
-        <Footer />
-      </section>
-    </PostContext.Provider>
+    <section >
+      <button onClick={() => { setIsFakeDark((isFakeDark) => !isFakeDark) }} className="btn-fake-dark-mode">{isFakeDark ? "☀️" : "🌙"}</button>
+      <Header posts={searchedPost} onClearPosts={handleClearPost} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Main posts={searchedPost} onAddPosts={handleAddPost} />
+      <Archive onAddPosts={handleAddPost} />
+      <Footer />
+    </section>
   );
 }
 
-function Header() {
-  const { onClearPosts } = useContext(PostContext);
+function Header({ posts, onClearPosts, searchQuery, setSearchQuery }) {
   return (
     <header>
       <h1>
         <span>⚛️</span>The Atomic Blog
       </h1>
       <div>
-        <Results />
-        <SearchPost />
+        <Results posts={posts} />
+        <SearchPost searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <button onClick={onClearPosts}>Clear Post</button>
       </div>
     </header>
   )
 }
 
-function SearchPost() {
-  const { searchQuery, setSearchQuery } = useContext(PostContext);
+function SearchPost({ searchQuery, setSearchQuery }) {
   return (
 
     <input type="search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="search posts..." />
 
   )
 }
-function Results() {
-  const { posts } = useContext(PostContext)
+function Results({ posts }) {
   return (
     <p><span>🚀</span>{posts.length} Atomic posts found</p>
   )
 }
 
-function Main() {
+function Main({ posts, onAddPosts }) {
   return (
     <main>
-      <FormPost />
-      <Posts />
+      <FormPost onAddPosts={onAddPosts} />
+      <Posts posts={posts} />
     </main>
   )
 }
 
-function FormPost() {
+function FormPost({ onAddPosts }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-
-  const { onAddPosts } = useContext(PostContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,25 +100,22 @@ function FormPost() {
   )
 }
 
-function Posts() {
-
+function Posts({ posts }) {
   return (
     <main>
-      <List />
+      <List posts={posts} />
     </main>
   )
 }
 
-function List() {
-  const { posts } = useContext(PostContext);
+function List({ posts }) {
   return (
     <ul>
       {posts.map((post, i) => (<li key={i}><div><h3>{post.title}</h3><p>{post.body}</p></div></li>))}
     </ul>
   )
 }
-function Archive() {
-  const { onAddPosts } = useContext(PostContext);
+function Archive({ onAddPosts }) {
   const [posts] = useState(() => Array.from({ length: 1000 }, () => createRandomPost()));
 
   const [showArchive, setShowArchive] = useState(false);

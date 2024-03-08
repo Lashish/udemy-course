@@ -1,10 +1,11 @@
+import styles from './Header.module.css'
 function Header() {
   return (
-    <div>
-        <h1>Fast React Pizza Co.</h1>
-        {/* <Search/> */}
-        <p>GoTo</p>
-    </div>
+    <>
+      <div className={styles.box}>
+        <div className={styles.innerBox}></div>
+      </div>
+    </>
   )
 }
 

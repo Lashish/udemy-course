@@ -19,7 +19,7 @@ function Login() {
 
                 </div>
                 <div>
-                    <Button types="primary">Login</Button>
+                    <Button type="primary">Login</Button>
                 </div>
             </form>
         </main>

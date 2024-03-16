@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
 import CountryItem from "./CountryItem";
 import styles from "./CountryList.module.css"
 import Spinner from './Spinner';
-
-function CountryList({ cities, isLoading }) {
+import { useCities } from '../contexts/citiesContext';
+function CountryList() {
+    const { cities, isLoading } = useCities();
     if (isLoading) return <Spinner />
     return (
         <ul className={styles.countryList}>

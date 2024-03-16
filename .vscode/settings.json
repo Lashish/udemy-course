@@ -1,8 +1,15 @@
 {
-    "editor.defaultFormatter": "VisualStudioExptTeam.vscodeintellicode",
+    "editor.defaultFormatter": "VisualStudioExptTeam.intellicode-api-usage-examples",
     "editor.formatOnSave": true,
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": true,
+    "editor.autoClosingBrackets": "always",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.guides.bracketPairs": "active",
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+    "editor.fontWeight": "500"
 }

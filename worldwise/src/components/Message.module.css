@@ -1,0 +1,10 @@
+.message{
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin:  auto;
+    font-weight: 600;
+    padding: 10px;
+    line-height: 1.5;
+}

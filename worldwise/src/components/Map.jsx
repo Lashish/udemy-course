@@ -12,6 +12,7 @@ import { useUrlPosition } from '../hooks/useUrlPosition';
 function Map() {
 
     const { cities } = useCities();
+    // console.log(cities)
 
     const [ mapPosition, setMapPosition ] = useState([ 25.505, 83.09 ]);
     // const [ searchParams, setSearchParams ] = useSearchParams();

@@ -1,27 +1,27 @@
 {
   "cities": [
     {
-      "id": "e04b",
-      "cityName": "Delhi",
+      "id": "776e",
+      "cityName": "Ghazipur",
       "country": "India",
-      "date": "2024-03-22T16:06:50.902Z",
+      "date": "2024-03-26T11:59:19.053Z",
       "emoji": "IN",
       "notes": "",
       "position": {
-        "lat": "28.55700154196904",
-        "lng": "77.2119140625"
+        "lat": "25.801681483107735",
+        "lng": "83.51267875694369"
       }
     },
     {
-      "id": "3bf2",
-      "cityName": "Rikaze Diqu",
-      "country": "China",
-      "date": "2024-03-22T16:07:15.668Z",
-      "emoji": "CN",
+      "id": "ddd7",
+      "cityName": "Ballia",
+      "country": "India",
+      "date": "2024-03-26T11:59:27.457Z",
+      "emoji": "IN",
       "notes": "",
       "position": {
-        "lat": "28.89294012899842",
-        "lng": "88.00872802734375"
+        "lat": "25.782090946760285",
+        "lng": "84.14935758728127"
       }
     }
   ]

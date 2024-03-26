@@ -76,7 +76,7 @@ function Form() {
     return (
         <form className={`${styles.form} ${isLoading ? styles.loading : ""}`} onSubmit={handleSubmit}>
             <div className={styles.row}>
-                <label htmlFor='cityName'>City Name<span> {emoji}</span></label>
+                <label htmlFor='cityName'>City Name{/*<span>{emoji}</span>*/}</label>
                 <input type='text' id='cityName' onChange={(e) => setCityName(e.target.value)} value={cityName} />
 
 
